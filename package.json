@@ -1,0 +1,15 @@
+{
+  "name": "com.rosemary.yummy-framework",
+  "version": "0.0.1",
+  "displayName": "Yummy Framework",
+  "description": "A Simple Unity Framework",
+  "unity": "2022.3",
+  "keywords": [
+    "Framework"
+  ],
+  "author": {
+    "name": "xRosemary",
+    "email": "2862656629@qq.com",
+    "url": "https://github.com/xRosemary"
+  }
+}
