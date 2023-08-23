@@ -6,21 +6,18 @@ using UnityEngine.Events;
 
 namespace YummyFrameWork
 {
-    public class HttpRequest : MonoSingleton<HttpRequest>, IInitable
+    public class HttpRequest : MonoSingleton<HttpRequest>
     {
-        public void Init()
+        public void SendHttpGet(string url, UnityAction<string> callback)
         {
-            MessageBus.Instance.Register(PublicHttpMessage.SendHttpGet, ((string, UnityAction<string>) requestInfo) =>
-            {
-                Debug.Log($"尝试发送GET请求: {requestInfo.Item1}");
-                StartCoroutine(HttpGet(requestInfo.Item1, requestInfo.Item2));
-            });
+            Debug.Log($"尝试发送GET请求: {url}");
+            StartCoroutine(HttpGet(url, callback));
+        }
 
-            MessageBus.Instance.Register(PublicHttpMessage.DownLoadFile, ((string, UnityAction<string, byte[]>) requestInfo) =>
-            {
-                Debug.Log("尝试下载文件: " + requestInfo.Item1);
-                StartCoroutine(DownloadFile(requestInfo.Item1, requestInfo.Item2));
-            });
+        public void DownloadFile(string url, UnityAction<string, byte[]> callback)
+        {
+            Debug.Log($"尝试下载文件: {url}");
+            StartCoroutine(Download(url, callback));
         }
 
         IEnumerator HttpGet(string url, UnityAction<string> callback)
@@ -44,7 +41,7 @@ namespace YummyFrameWork
             }
         }
 
-        IEnumerator DownloadFile(string url, UnityAction<string, byte[]> callback)
+        IEnumerator Download(string url, UnityAction<string, byte[]> callback)
         {
             using UnityWebRequest request = UnityWebRequest.Get(url);
             request.timeout = 5;
