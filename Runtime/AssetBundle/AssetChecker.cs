@@ -29,7 +29,7 @@ namespace YummyFrameWork
         void OnAssetCheckFinished()
         {
             MessageBus.Instance.Send(PublicAssetMessage.AssetDownLoadFinished);
-            Debug.Log("Êı¾İ¸üĞÂÍê±Ï");
+            Debug.Log("æ•°æ®æ›´æ–°å®Œæ¯•");
             SaveAssetList();
         }
 
@@ -41,22 +41,22 @@ namespace YummyFrameWork
             List<AssetData> dataToDownLoad = serverData.Except(localData).ToList();
             List<AssetData> dataToDelete = localData.Except(serverData).ToList();
 
-            // É¾³ı¹ıÆÚµÄÎÄ¼ş
+            // åˆ é™¤è¿‡æœŸçš„æ–‡ä»¶
             foreach (AssetData data in dataToDelete)
             {
                 File.Delete(AssetConfig.AssetPath + data.name);
             }
 
-            // ¸üĞÂÎÄ¼şĞÅÏ¢±í
+            // æ›´æ–°æ–‡ä»¶ä¿¡æ¯è¡¨
             localData = localData.Except(dataToDelete).ToList();
 
-            // ¼ì²éÊÇ·ñĞèÒª¸úĞÂ
+            // æ£€æŸ¥æ˜¯å¦éœ€è¦è·Ÿæ–°
             if (dataToDownLoad.Count == 0)
             {
                 OnAssetCheckFinished();
                 return;
             }
-            // ÏÂÔØĞèÒª¸üĞÂµÄÎÄ¼ş
+            // ä¸‹è½½éœ€è¦æ›´æ–°çš„æ–‡ä»¶
             MessageBus.Instance.Send(PublicAssetMessage.DownLoadAssetBegin, dataToDownLoad.Count);
             foreach (AssetData data in dataToDownLoad)
             {
@@ -74,11 +74,11 @@ namespace YummyFrameWork
             string md5 = AssetUtil.GetMD5(data);
             if (md5 != dataToDownLoadDic[name])
             {
-                Debug.LogWarning($"²»ºÏ·¨µÄÎÄ¼ş: {name}");
+                Debug.LogWarning($"ä¸åˆæ³•çš„æ–‡ä»¶: {name}");
                 Debug.LogWarning($"MD5: {md5}");
                 return;
             }
-            Debug.Log($"ÒÑ»ñÈ¡ÎÄ¼şÊı¾İÁ÷: {name}");
+            Debug.Log($"å·²è·å–æ–‡ä»¶æ•°æ®æµ: {name}");
             dataToDownLoadDic.Remove(name);
             File.WriteAllBytesAsync(AssetConfig.AssetPath + name, data);
             localData.Add(new AssetData(name, md5));
@@ -92,17 +92,25 @@ namespace YummyFrameWork
 
         List<AssetData> LoadAssetListFromLocal()
         {
+            if (!Directory.Exists(AssetConfig.AssetPath))
+            {
+                // å¦‚æœæ–‡ä»¶å¤¹ä¸å­˜åœ¨ï¼Œåˆ™åˆ›å»º
+                Directory.CreateDirectory(AssetConfig.AssetPath);
+                Debug.Log("ABåŒ…æ–‡ä»¶å¤¹å·²åˆ›å»º");
+            }
+
+
             List<AssetData> ret;
             if (!File.Exists(assetListPath))
             {
-                Debug.Log("Î´ÕÒµ½Ô­Ê¼ÎÄ¼ş");
+                Debug.Log("æœªæ‰¾åˆ°åŸå§‹æ–‡ä»¶");
                 ret = new List<AssetData>();
             }
             else
             {
                 string json = File.ReadAllText(assetListPath);
                 ret = JsonMapper.ToObject<List<AssetData>>(json);
-                Debug.Log("¶ÁÈ¡±¾µØÊı¾İ³É¹¦");
+                Debug.Log("è¯»å–æœ¬åœ°æ•°æ®æˆåŠŸ");
             }
             return ret;
         }
@@ -111,7 +119,7 @@ namespace YummyFrameWork
         {
             string data = JsonMapper.ToJson(localData);
             File.WriteAllTextAsync(assetListPath, data);
-            Debug.Log($"Êı¾İ±£´æ³É¹¦: {data}");
+            Debug.Log($"æ•°æ®ä¿å­˜æˆåŠŸ: {data}");
         }
 
         void OnDestroy()

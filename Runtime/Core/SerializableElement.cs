@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 namespace YummyFrameWork {
     [System.Serializable]
     public struct SerializableElement<K, V>

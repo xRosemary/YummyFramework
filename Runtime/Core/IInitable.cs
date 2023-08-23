@@ -1,4 +1,4 @@
-﻿namespace YummyFrameWork
+namespace YummyFrameWork
 {
     public interface IInitable
     {

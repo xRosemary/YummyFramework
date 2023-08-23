@@ -1,4 +1,4 @@
-﻿using System.IO;
+using System.IO;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Networking;

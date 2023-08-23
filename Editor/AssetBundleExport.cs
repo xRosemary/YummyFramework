@@ -7,25 +7,25 @@ namespace YummyFrameWork
     public class AssetBundleExport
     {
 
-        [MenuItem("AB锟斤拷锟斤拷锟斤拷/Windows")]
+        [MenuItem("AB包导出/Windows")]
         static void ExportWindows()
         {
             ExportAssetBundle(BuildTarget.StandaloneWindows);
         }
 
-        [MenuItem("AB锟斤拷锟斤拷锟斤拷/Mac")]
+        [MenuItem("AB包导出/Mac")]
         static void ExportMac()
         {
             ExportAssetBundle(BuildTarget.StandaloneOSX);
         }
 
-        [MenuItem("AB锟斤拷锟斤拷锟斤拷/IOS")]
+        [MenuItem("AB包导出/IOS")]
         static void ExportIOS()
         {
             ExportAssetBundle(BuildTarget.iOS);
         }
 
-        [MenuItem("AB锟斤拷锟斤拷锟斤拷/Android")]
+        [MenuItem("AB包导出/Android")]
         static void ExportAndroid()
         {
             ExportAssetBundle(BuildTarget.Android);
