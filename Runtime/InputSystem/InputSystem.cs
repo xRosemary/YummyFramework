@@ -11,11 +11,8 @@ namespace YummyFrameWork
         {
             for(int i=0; i < actionMapPrefabs.Count; i++)
             {
-                if (PrefabUtility.IsPartOfPrefabAsset(actionMapPrefabs[i]))
-                {
-                    // 是预制体则实例化
-                    actionMapPrefabs[i] = Instantiate(actionMapPrefabs[i]); 
-                }
+                // 实例化预制体
+                actionMapPrefabs[i] = Instantiate(actionMapPrefabs[i]);
             }
         }
 
