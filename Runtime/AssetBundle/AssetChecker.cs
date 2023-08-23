@@ -16,6 +16,11 @@ namespace YummyFrameWork
 
         void Awake()
         {
+            if(HttpRequest.Instance == null)
+            {
+                return;
+            }
+
             assetListPath = AssetConfig.AssetPath + "AssetData.json";
             localData = LoadAssetListFromLocal();
             MessageBus.Instance.Register(PublicAssetMessage.StartAssetCheck, () =>
