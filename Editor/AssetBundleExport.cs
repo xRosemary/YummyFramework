@@ -35,7 +35,7 @@ namespace YummyFrameWork
         {
             string dataPath = Application.dataPath + "/AssetBundle/";
 
-            // 锟叫讹拷dataPath目录锟角凤拷锟斤拷锟�
+            // 创建AB包的导出目录
             if (!Directory.Exists(dataPath))
             {
                 Directory.CreateDirectory(dataPath);
