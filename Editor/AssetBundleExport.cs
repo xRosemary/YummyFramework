@@ -7,25 +7,25 @@ namespace YummyFrameWork
     public class AssetBundleExport
     {
 
-        [MenuItem("AB°üµ¼³ö/Windows")]
+        [MenuItem("ABé”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·/Windows")]
         static void ExportWindows()
         {
             ExportAssetBundle(BuildTarget.StandaloneWindows);
         }
 
-        [MenuItem("AB°üµ¼³ö/Mac")]
+        [MenuItem("ABé”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·/Mac")]
         static void ExportMac()
         {
             ExportAssetBundle(BuildTarget.StandaloneOSX);
         }
 
-        [MenuItem("AB°üµ¼³ö/IOS")]
+        [MenuItem("ABé”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·/IOS")]
         static void ExportIOS()
         {
             ExportAssetBundle(BuildTarget.iOS);
         }
 
-        [MenuItem("AB°üµ¼³ö/Android")]
+        [MenuItem("ABé”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·/Android")]
         static void ExportAndroid()
         {
             ExportAssetBundle(BuildTarget.Android);
@@ -35,7 +35,7 @@ namespace YummyFrameWork
         {
             string dataPath = Application.dataPath + "/AssetBundle/";
 
-            // ÅĞ¶ÏdataPathÄ¿Â¼ÊÇ·ñ´æÔÚ
+            // é”Ÿå«è®¹æ‹·dataPathç›®å½•é”Ÿè§’å‡¤æ‹·é”Ÿæ–¤æ‹·é”Ÿï¿½
             if (!Directory.Exists(dataPath))
             {
                 Directory.CreateDirectory(dataPath);
