@@ -9,7 +9,7 @@ namespace YummyFrameWork
         [SerializeField] protected EInputType inputMode;
         [SerializeField] protected string message;
 
-        public void Tick()
+        public virtual void Tick()
         {
             switch (inputMode)
             {
