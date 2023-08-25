@@ -4,7 +4,7 @@ using UnityEngine.Events;
 
 namespace YummyFrameWork
 {
-    class HeapTimer : MonoSingleton<HeapTimer>, IInitable
+    public class HeapTimer : MonoSingleton<HeapTimer>, IInitable
     {
         private Heap<DelayTask> tasks;
 
