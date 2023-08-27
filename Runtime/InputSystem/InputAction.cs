@@ -5,7 +5,7 @@ namespace YummyFrameWork
     [System.Serializable]
     public class InputAction
     {
-        [SerializeField] protected KeyCode keyCode;
+        [SerializeField] protected string keyCode;
         [SerializeField] protected EInputType inputMode;
         [SerializeField] protected string message;
 
@@ -32,7 +32,7 @@ namespace YummyFrameWork
                     }
                     break;
                 case EInputType.Axis:
-                    MessageBus.Instance.Send(message, Input.GetAxis(message));
+                    MessageBus.Instance.Send(keyCode, Input.GetAxis(message));
                     break;
                 default:
                     break;
