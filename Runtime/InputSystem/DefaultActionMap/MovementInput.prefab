@@ -45,9 +45,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actionList:
-  - keyCode: 0
+  - keyCode: Horizontal
     inputMode: 4
     message: Horizontal
-  - keyCode: 0
+  - keyCode: Vertical
     inputMode: 4
     message: Vertical
